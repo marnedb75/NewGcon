@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Listagem de Colaboradores</h2>
+</div>
+
+<div class="card shadow-sm border-0">
+    <div class="card-body p-0">
+        <table class="table table-striped table-hover mb-0">
+            <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>CPF</th>
+                    <th>Nome</th>
+                    <th>Sexo</th>
+                    <th>Nascimento</th>
+                    <th>Contratação</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for c in colaboradores %}
+                <tr>
+                    <td>{{ c.id }}</td>
+                    <td>{{ c.cpf }}</td>
+                    <td>{{ c.nome or '-' }}</td>
+                    <td>{{ c.sexo or '-' }}</td>
+                    <td>{{ c.data_nascimento.strftime('%d/%m/%Y') if c.data_nascimento else '-' }}</td>
+                    <td>{{ c.data_contratacao.strftime('%d/%m/%Y') if c.data_contratacao else '-' }}</td>
+                </tr>
+                {% else %}
+                <tr><td colspan="6" class="text-center py-3">Nenhum colaborador encontrado.</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
