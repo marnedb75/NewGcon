@@ -1,0 +1,17 @@
+ services:
+    web:
+      build: .
+      container_name: newgcon_app
+      restart: always
+      ports:
+        - "5000:5000"
+      environment:
+        - FLASK_ENV=production
+        - DB_HOST=172.27.8.12
+        - DB_USER=root
+        - DB_PASS=
+        - DB_NAME=gcon
+      # Se quiser testar em modo de desenvolvimento com auto-reload local, descomente as linhas abaixo:
+      # volumes:
+      #   - .:/app
+      # command: python app.py
