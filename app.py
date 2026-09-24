@@ -44,7 +44,7 @@ def listar_fornecedores():
             (Fornecedor.representante.ilike(f'%{search}%'))
         )
 
-    fornecedores = query.limit(100).all()
+    fornecedores = query.limit(200).all()
     return render_template('fornecedores.html', fornecedores=fornecedores, search=search)
 
 # CREATE: Criar Fornecedor
